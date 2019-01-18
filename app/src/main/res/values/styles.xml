@@ -1,0 +1,85 @@
+<resources>
+
+    <!--
+    Question Activity Styles
+    -->
+
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.TitleTextView" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingTop">24dp</item>
+        <item name="android:paddingBottom">24dp</item>
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="AppTheme.Choice1Button">
+        <item name="android:backgroundTint">@color/colorChoice1</item>
+        <item name="android:background">@drawable/ic_button_background</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:padding">16dp</item>
+    </style>
+
+    <style name="AppTheme.Choice2Button" parent="AppTheme.Choice1Button">
+        <item name="android:backgroundTint">@color/colorChoice2</item>
+    </style>
+
+    <style name="AppTheme.Choice1ResultFrame">
+        <item name="android:background">@color/colorChoice1</item>
+    </style>
+
+    <style name="AppTheme.Choice2ResultFrame" parent="AppTheme.Choice1ResultFrame">
+        <item name="android:background">@color/colorChoice2</item>
+    </style>
+
+    <style name="AppTheme.ChoiceTextView">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:gravity">center|top</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:padding">16dp</item>
+    </style>
+
+    <style name="AppTheme.ChoiceResultTextView" parent="AppTheme.ChoiceTextView">
+        <item name="autoSizeTextType">uniform</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="AppTheme.OrTextView">
+        <item name="android:background">@drawable/ic_circle</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:elevation">8dp</item>
+    </style>
+
+    <!--
+    Create Question Activity Styles
+    -->
+
+    <style name="AppTheme.TextInputLayout">
+        <item name="android:background">@drawable/ic_textfield_background</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:textColorHint">@android:color/black</item>
+    </style>
+
+    <style name="AppTheme.EditText">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:gravity">top</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+</resources>

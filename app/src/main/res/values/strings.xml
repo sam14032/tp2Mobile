@@ -1,0 +1,24 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Would you rather…</string>
+
+    <string name="title_activity_question">Would you rather…</string>
+    <string name="title_activity_create_question">Create your own question</string>
+
+    <string name="text_or">Or</string>
+    <string name="text_question">Your question</string>
+    <string name="text_choice1">First choice</string>
+    <string name="text_choice2">Second choice</string>
+    <string name="text_report_thanks">This question has been reported. Thank you!</string>
+
+    <string name="text_btn_create">Create question</string>
+    <string name="text_btn_retry">Retry</string>
+    <string name="text_btn_report">Report</string>
+
+    <string name="text_error">Error</string>
+    <string name="text_error_internet">No internet connectivity. Please try again later.</string>
+    <string name="text_error_server">Something went wrong. Please try again later.</string>
+    <string name="text_error_field">Please fill this field.</string>
+    <string name="text_error_validation">Please fill all the fields.</string>
+
+    <string name="text_initial_quesiton" tools:ignore="TypographyEllipsis">Would you rather...</string>
+</resources>

@@ -19,6 +19,15 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+		
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        "androidManifestFile": "$projectDir/src/main/AndroidManifest.xml".toString()
+                ]
+            }
+        }
+		
     }
     dataBinding {
         enabled = true

@@ -15,7 +15,7 @@ class QuestionActivity : AppCompatActivity() {
     protected lateinit var viewModel: QuestionActivityViewModel
 
     protected fun onCreate(@BindingObject dataBinder: ActivityQuestionBinding) {
-        if(!this::viewModel.isInitialized){
+        if (!this::viewModel.isInitialized) {
             viewModel = QuestionActivityViewModel()
         }
 

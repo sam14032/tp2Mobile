@@ -5,11 +5,8 @@ import org.androidannotations.annotations.EBean
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.converter.jackson.JacksonConverterFactory
-import retrofit2.create
 import retrofit2.http.GET
 import retrofit2.http.POST
-import retrofit2.http.Path
 import retrofit2.http.Query
 import java.io.IOException
 
@@ -31,14 +28,14 @@ class QuestionService(){
     fun getRandomQuestion(onSuccess :
                               (QuestionOutputDTO) ->Unit,
                           onConnectivityError : () ->Unit,
-                          onServerError : () ->Unit){
+                          onServerError : (Int) ->Unit){
         try {
             val response = service.getRandomQuestion().execute()
             if(response.isSuccessful){
                 onSuccess(response.body()!!)
             }
             else{
-                onServerError()
+                onServerError(response.code())
             }
         }
         catch (exception : IOException){
@@ -51,14 +48,14 @@ class QuestionService(){
                    choice: String,
                    onSuccess : (QuestionOutputDTO) ->Unit,
                    onConnectivityError : () ->Unit,
-                   onServerError : () ->Unit){
+                   onServerError : (Int) ->Unit){
         try {
             val response = service.sendChoice(id,choice).execute()
             if(response.isSuccessful){
                 onSuccess(response.body()!!)
             }
             else{
-                onServerError()
+                onServerError(response.code())
             }
         }
         catch (exception : IOException){

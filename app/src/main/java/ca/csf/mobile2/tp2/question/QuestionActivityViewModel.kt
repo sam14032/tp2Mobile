@@ -1,6 +1,7 @@
 package ca.csf.mobile2.tp2.question
 
 import android.databinding.BaseObservable
+import android.databinding.Bindable
 import org.androidannotations.annotations.Bean
 import org.androidannotations.annotations.InstanceState
 import org.parceler.Parcel
@@ -10,6 +11,7 @@ import org.parceler.ParcelConstructor
 class QuestionActivityViewModel @ParcelConstructor constructor() :
     BaseObservable() {
 
+    @Bindable
     var appState = AppState.Fetch
 
     fun onResume() {

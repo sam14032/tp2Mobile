@@ -8,9 +8,6 @@
         <variable
                 name="viewModel"
                 type="ca.csf.mobile2.tp2.question.QuestionActivityViewModel"/>
-        <variable
-                name="appState"
-                type="ca.csf.mobile2.tp2.question.AppState"/>
 
     </data>
 
@@ -68,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="?attr/actionBarSize"
-                android:visibility="@{appState == AppState.MakeChoice ? View.VISIBLE : View.GONE}">
+                android:visibility="@{viewModel.appState == AppState.MakeChoice ? View.VISIBLE : View.GONE}">
 
             <Button
                     android:id="@+id/choice1_button"
@@ -107,7 +104,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="?attr/actionBarSize"
-                android:visibility="@{appState == AppState.ChoiceResult ? View.VISIBLE : View.GONE}">
+                android:visibility="@{viewModel.appState == AppState.ChoiceResult ? View.VISIBLE : View.GONE}">
 
             <View
                     android:id="@+id/choice1_result_background"
@@ -185,7 +182,7 @@
                 android:layout_height="match_parent"
                 android:background="?android:colorBackground"
                 android:translationZ="16dp"
-                android:visibility="@{appState == AppState.Error ? View.VISIBLE : View.GONE}">
+                android:visibility="@{viewModel.appState == AppState.Error ? View.VISIBLE : View.GONE}">
 
             <ImageView
                     android:id="@+id/error_imageview"
@@ -244,7 +241,7 @@
                 android:layout_height="match_parent"
                 android:background="@color/colorPrimaryAlpha"
                 android:translationZ="16dp"
-                android:visibility="@{appState == AppState.Fetch ? View.VISIBLE : View.GONE}">
+                android:visibility="@{viewModel.appState == AppState.Fetch ? View.VISIBLE : View.GONE}">
 
             <ProgressBar
                     android:id="@+id/progressBar"

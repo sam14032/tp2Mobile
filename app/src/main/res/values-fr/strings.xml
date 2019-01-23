@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Que préférez-vous...</string>
+    <string name="title_activity_question">Que préférez-vous...</string>
+    <string name="text_or">Ou</string>
+    <string name="text_question">Votre question</string>
+    <string name="text_choice1">Premier choix</string>
+    <string name="text_choice2">Second choix</string>
+    <string name="text_report_thanks">Cette question a été rapportée. Je vous remercie!</string>
+    <string name="text_btn_create">Créer une question</string>
+    <string name="text_btn_retry">Réessayer</string>
+    <string name="text_btn_report">Rapportée</string>
+    <string name="text_error">Erreur</string>
+    <string name="text_error_internet">Aucune connexion internet. Réessayer plus tard.</string>
+    <string name="text_error_server">Quelque chose s\'est mal passé. Veuillez réessayer plus tard.</string>
+    <string name="text_error_field">S\'il vous plaît remplir ce champ.</string>
+    <string name="text_error_validation">S\'il vous plaît remplir tout les champs.</string>
+    <string name="text_initial_quesiton">Que préférez-vous...</string>
+    <string name="title_activity_create_question">Créer votre propre question</string>
+    <string name="question_service_url">Que préférez-vous...</string>
+</resources>

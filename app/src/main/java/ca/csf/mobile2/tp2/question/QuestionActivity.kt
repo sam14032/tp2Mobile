@@ -64,7 +64,7 @@ class QuestionActivity : AppCompatActivity() {
         viewModel.onConnectivityError()
     }
 
-    fun onServerError() {
+    fun onServerError(errorCode : Int) {
         viewModel.onServerError()
     }
 }

@@ -11,15 +11,24 @@ import org.androidannotations.annotations.*
 @EActivity(R.layout.activity_question)
 class QuestionActivity : AppCompatActivity() {
 
+    @Bean
+    protected lateinit var questionService: QuestionService
+
     @InstanceState
     protected lateinit var viewModel: QuestionActivityViewModel
 
     protected fun onCreate(@BindingObject dataBinder: ActivityQuestionBinding) {
         if (!this::viewModel.isInitialized) {
             viewModel = QuestionActivityViewModel()
+            viewModel.start()
+            getNewQuestion()
         }
 
         dataBinder.viewModel = viewModel
+    }
+
+    protected fun getNewQuestion() {
+        questionService.getRandomQuestion(this::onSuccess, this::onConnectivityError, this::onServerError)
     }
 
     override fun onResume() {
@@ -33,20 +42,29 @@ class QuestionActivity : AppCompatActivity() {
     }
 
     @Click(R.id.choice1_button)
-    protected fun onChoice1ButtonClicked()
-    {
-
+    protected fun onChoice1ButtonClicked() {
+        viewModel.onChoice1ButtonClicked()
     }
 
     @Click(R.id.choice2_button)
-    protected fun onChoice2ButtonClicked()
-    {
-
+    protected fun onChoice2ButtonClicked() {
+        viewModel.onChoice2ButtonClicked()
     }
 
     @Click(R.id.retry_button)
-    protected fun onRetryButtonClicked()
-    {
+    protected fun onRetryButtonClicked() {
+        viewModel.onRetryButtonClicked()
+    }
 
+    fun onSuccess(questionOutputDTO: QuestionOutputDTO) {
+        viewModel.onSuccess()
+    }
+
+    fun onConnectivityError() {
+        viewModel.onConnectivityError()
+    }
+
+    fun onServerError() {
+        viewModel.onServerError()
     }
 }

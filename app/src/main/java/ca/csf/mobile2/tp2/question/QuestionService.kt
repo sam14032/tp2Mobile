@@ -5,49 +5,45 @@ import org.androidannotations.annotations.EBean
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.converter.jackson.JacksonConverterFactory
-import retrofit2.create
 import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
 import java.io.IOException
 
 private const val QUESTION_URL = "https://m2t2.csfpwmjv.tk"
-@EBean(scope = EBean.Scope.Singleton)
-class QuestionService(){
 
-    private val service : Service
+@EBean(scope = EBean.Scope.Singleton)
+class QuestionService() {
+
+    private val service: Service
 
     init {
         val retrofit = Retrofit.Builder()
-        .baseUrl(QUESTION_URL)
+            .baseUrl(QUESTION_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         service = retrofit.create(Service::class.java)
     }
 
     @Background
-    fun getRandomQuestion(onSuccess :
-                              (QuestionOutputDTO) ->Unit,
-                          onConnectivityError : () ->Unit,
-                          onServerError : () ->Unit){
+    fun getRandomQuestion(
+        onSuccess:(QuestionOutputDTO) -> Unit,
+        onConnectivityError: () -> Unit,
+        onServerError: () -> Unit
+    ) {
         try {
             val response = service.getRandomQuestion().execute()
-            if(response.isSuccessful){
+            if (response.isSuccessful) {
                 onSuccess(response.body()!!)
-            }
-            else{
+            } else {
                 onServerError()
             }
-        }
-        catch (exception : IOException){
+        } catch (exception: IOException) {
             onConnectivityError()
         }
     }
 }
 
-private interface Service{
+private interface Service {
     @GET("api/v1/question/random")
-    fun getRandomQuestion() : Call<QuestionOutputDTO>
+    fun getRandomQuestion(): Call<QuestionOutputDTO>
 }
 

@@ -1,6 +1,5 @@
 package ca.csf.mobile2.tp2.question
 
-import org.androidannotations.annotations.Bean
 import org.parceler.Parcel
 import org.parceler.ParcelConstructor
 

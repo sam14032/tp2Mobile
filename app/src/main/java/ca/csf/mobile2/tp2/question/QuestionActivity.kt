@@ -27,38 +27,27 @@ class QuestionActivity : AppCompatActivity() {
     }
 
     protected fun getNewQuestion() {
-        questionService.getRandomQuestion(this::onSuccessChoice, this::onConnectivityError, this::onServerError)
+        questionService.getRandomQuestion(this::onSuccessChoice, this::onError)
     }
 
     protected fun sendResponse(id: String, choice: String) {
-        questionService.sendChoice(id, choice, this::onSuccessResult, this::onConnectivityError, this::onServerError)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        viewModel.onResume()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        viewModel.onPause()
+        questionService.sendChoice(id, choice, this::onSuccessResult, this::onError)
     }
 
     @Click(R.id.choice1_button)
     protected fun onChoice1ButtonClicked() {
-        viewModel.onChoiceMade()
         sendResponse(viewModel.questionOutputDTO.id, "choose1")
     }
 
     @Click(R.id.choice2_button)
     protected fun onChoice2ButtonClicked() {
-        viewModel.onChoiceMade()
         sendResponse(viewModel.questionOutputDTO.id, "choose2")
     }
 
     @Click(R.id.retry_button)
     protected fun onRetryButtonClicked() {
         viewModel.onRetryButtonClicked()
+        getNewQuestion()
     }
 
     @Click(R.id.root_view)
@@ -73,16 +62,10 @@ class QuestionActivity : AppCompatActivity() {
     }
 
     fun onSuccessResult(questionOutputDTO: QuestionOutputDTO) {
-        viewModel.onSuccessResult(questionOutputDTO)
+        viewModel.onChoiceMade(questionOutputDTO)
     }
 
-    fun onConnectivityError() {
-        viewModel.onConnectivityError()
+    fun onError(errorCode: ErrorCode) {
+        viewModel.onError(errorCode)
     }
-
-    fun onServerError(errorCode: Int) {
-        viewModel.onServerError(errorCode)
-    }
-
-
 }

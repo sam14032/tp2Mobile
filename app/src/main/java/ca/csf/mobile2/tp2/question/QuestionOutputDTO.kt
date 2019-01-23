@@ -14,6 +14,10 @@ data class QuestionOutputDTO @ParcelConstructor constructor(
     var text: String
 ) {
     private fun getPercent(first: Int, second: Int): Int {
+        if (first == 0 && second == 0) {
+            return 0
+        }
+
         return ((first.toFloat() / (first + second).toFloat()) * 100).roundToInt()
     }
 

@@ -2,6 +2,7 @@ package ca.csf.mobile2.tp2.question
 
 import android.databinding.BaseObservable
 import android.databinding.Bindable
+import ca.csf.mobile2.tp2.util.ViewModelProperty
 import org.androidannotations.annotations.Bean
 import org.androidannotations.annotations.InstanceState
 import org.parceler.Parcel
@@ -11,8 +12,11 @@ import org.parceler.ParcelConstructor
 class QuestionActivityViewModel @ParcelConstructor constructor() :
     BaseObservable() {
 
-    @Bindable
-    var appState = AppState.Fetch
+    @get:Bindable
+    var appState: AppState by ViewModelProperty(AppState.Fetch, this)
+
+    @get:Bindable
+    var questionOutputDTO: QuestionOutputDTO by ViewModelProperty(QuestionOutputDTO("", "", "", 1, 1, ""), this)
 
     fun onResume() {
 
@@ -22,32 +26,37 @@ class QuestionActivityViewModel @ParcelConstructor constructor() :
 
     }
 
-    fun onSuccess() {
+    fun onSuccessChoice(questionOutputDTO: QuestionOutputDTO) {
         appState = AppState.MakeChoice
+        this.questionOutputDTO = questionOutputDTO
+    }
+
+    fun onSuccessResult(questionOutputDTO: QuestionOutputDTO) {
+        appState = AppState.MakeChoice
+        this.questionOutputDTO = questionOutputDTO
     }
 
     fun onConnectivityError() {
         appState = AppState.Error
     }
 
-    fun onServerError() {
+    fun onServerError(errorCode: Int) {
         appState = AppState.Error
     }
 
-    fun onChoice1ButtonClicked() {
-        if (appState == AppState.ChoiceResult) {
+    fun onScreenClicked(): Boolean{
+        if(appState == AppState.ChoiceResult)
+        {
             appState = AppState.Fetch
-        } else {
-            appState = AppState.ChoiceResult
+            return true
         }
+        return false
     }
 
-    fun onChoice2ButtonClicked() {
-        if (appState == AppState.ChoiceResult) {
-            appState = AppState.Fetch
-        } else {
-            appState = AppState.ChoiceResult
-        }
+    fun onChoiceMade() {
+         if(appState == AppState.MakeChoice) {
+             appState = AppState.ChoiceResult
+         }
     }
 
     fun onRetryButtonClicked() {

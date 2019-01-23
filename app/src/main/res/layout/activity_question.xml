@@ -5,6 +5,7 @@
     <data>
         <import type="android.view.View"/>
         <import type="ca.csf.mobile2.tp2.question.AppState"/>
+        <import type="ca.csf.mobile2.tp2.question.ErrorCode"/>
         <variable
                 name="viewModel"
                 type="ca.csf.mobile2.tp2.question.QuestionActivityViewModel"/>
@@ -21,45 +22,8 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                android:titleTextColor="@color/colorPrimaryLight"
                 tools:title="@{viewModel.questionOutputDTO.text}"/>
-
-        <!--
-        *************************************************************
-        IMPORTANT!!!!
-
-        En temps normal, ce fichier de layout serait séparé en
-        plusieurs petits fichiers. Cependant, cela complexifie
-        votre gestion du DataBinding. Pour simplifier le travail,
-        il n'y a qu'un seul fichier contenant diverses parties que
-        vous devrez afficher ou cacher en fonction des besoins.
-
-        Pour afficher ou cacher un élément d'interface, utilisez
-        cet attribut :
-
-            android:visibility
-
-        Ce dernier peut recevoir une de ces trois valeurs :
-
-         * View.VISIBLE
-         * View.INVISIBLE
-         * View.GONE
-
-        Quand vous serez rendu à modifier ce fichier pour faire du
-        DataBinding, ajoutez ceci dans la balise « <data> » :
-
-            <import type="android.view.View" />
-
-        Cela vous sera nécessaire pour avoir accès aux différentes
-        constantes.
-
-        *************************************************************
-        -->
-
-        <!--
-        *************************************************************
-        Section "Poser une question"
-        *************************************************************
-        -->
 
         <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
@@ -211,7 +175,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/error_imageview"
-                    tools:text="@string/text_error_internet"/>
+                    tools:text="@{viewModel.errorCode == ErrorCode.SERVER_ERROR ? @string/text_error_server : @string/text_error_internet}"/>
 
             <Button
                     android:id="@+id/retry_button"

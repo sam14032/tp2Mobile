@@ -10,11 +10,7 @@ import org.parceler.ParcelConstructor
 class QuestionActivityViewModel @ParcelConstructor constructor() :
     BaseObservable() {
 
-    lateinit var appState: AppState
-
-    fun start() {
-        appState = AppState.Fetch
-    }
+    var appState = AppState.Fetch
 
     fun onResume() {
 

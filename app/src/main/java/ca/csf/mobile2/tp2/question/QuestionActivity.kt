@@ -20,7 +20,6 @@ class QuestionActivity : AppCompatActivity() {
     protected fun onCreate(@BindingObject dataBinder: ActivityQuestionBinding) {
         if (!this::viewModel.isInitialized) {
             viewModel = QuestionActivityViewModel()
-            viewModel.start()
             getNewQuestion()
         }
 

@@ -19,6 +19,11 @@ class QuestionActivityViewModel @ParcelConstructor constructor() :
     @get:Bindable
     var errorCode: ErrorCode by ViewModelProperty(ErrorCode.SERVER_ERROR, this)
 
+    //BEN_REVIEW : Bonne idée de créer ce genre de fonction pour modifier l'état de la vue, mais le nommage
+    //             laisse à désirer. Ce ne sont pas des événements, alors je vois mal pourquoi cela commence
+    //             par "on". Cependant, je "comprends" un peu la logique derrière, alors je vais laisser
+    //             tomber.
+
     fun onSuccessChoice(questionOutputDTO: QuestionOutputDTO) {
         appState = AppState.MakeChoice
         this.questionOutputDTO = questionOutputDTO

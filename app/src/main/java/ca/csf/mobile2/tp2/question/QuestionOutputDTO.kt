@@ -4,6 +4,11 @@ import org.parceler.Parcel
 import org.parceler.ParcelConstructor
 import kotlin.math.roundToInt
 
+//BEN_REVIEW : Voir ceci : https://en.wikipedia.org/wiki/Data_transfer_object
+//
+//             En gros, il vous manque une classe "Question", car vous ne devriez
+//             pas utiliser vos DTO en dehors de "QuestionService".
+
 @Parcel(Parcel.Serialization.BEAN)
 data class QuestionOutputDTO @ParcelConstructor constructor(
     var choice1: String,
@@ -13,6 +18,8 @@ data class QuestionOutputDTO @ParcelConstructor constructor(
     var nbChoice2: Int,
     var text: String
 ) {
+    //BEN_REVIEW : Aurait pu être "statique" (dans un companion object ou tout simplement
+    //             en dehors de cette classe en fin de fichier).
     private fun getPercent(first: Int, second: Int): Int {
         if (first == 0 && second == 0) {
             return 0

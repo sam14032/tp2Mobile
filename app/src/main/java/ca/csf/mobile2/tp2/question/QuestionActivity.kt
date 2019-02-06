@@ -36,6 +36,10 @@ class QuestionActivity : AppCompatActivity() {
 
     @Click(R.id.choice1_button)
     protected fun onChoice1ButtonClicked() {
+        //BEN_CORRECTION : 2 choses :
+        //                  1. Constante manquante.
+        //                  2. "choose1" et "choose2" sont des détails d'implémentation du service. Vous devriez
+        //                     plutôt prendre un entier qui représente le numéro du choix à la place.
         sendResponse(viewModel.questionOutputDTO.id, "choose1")
     }
 
@@ -50,6 +54,7 @@ class QuestionActivity : AppCompatActivity() {
         getNewQuestion()
     }
 
+    //BEN_REVIEW : Il y a un autre moyen de gérer cela sans avoir à faire cette condition.
     @Click(R.id.root_view)
     protected fun onScreenClicked() {
         if (viewModel.onScreenClicked()) {
@@ -57,14 +62,18 @@ class QuestionActivity : AppCompatActivity() {
         }
     }
 
+    //BEN_CORRECTION : Private manquant.
     fun onSuccessChoice(questionOutputDTO: QuestionOutputDTO) {
         viewModel.onSuccessChoice(questionOutputDTO)
     }
 
+    //BEN_CORRECTION : Private manquant.
+    //BEN_CORRECTION : Nomage ambigu.
     fun onSuccessResult(questionOutputDTO: QuestionOutputDTO) {
         viewModel.onChoiceMade(questionOutputDTO)
     }
 
+    //BEN_CORRECTION : Private manquant.
     fun onError(errorCode: ErrorCode) {
         viewModel.onError(errorCode)
     }
